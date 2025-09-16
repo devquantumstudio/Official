@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="theme-color" content="#0d0b10" />
+		<meta name="description" content="Official Website of DevQuantum Studio - Focused on building digital tools through hands-on learning and creative experimentation." />
+		<meta property="og:title" content="DevQuantum Studio — Official Website" />
+		<meta property="og:description" content="The official website of DevQuantum Studio dedicated to creating digital tools." />
+		<meta property="og:type" content="website" />
+		<meta property="og:image" content="https://devquantumstudio.github.io/Official/assets/media/dev-ico.png" />
+		<meta property="og:url" content="https://devquantumstudio.github.io/Official/" />
+		<title>DevQuantum Studio</title>
+		<link rel="canonical" href="https://devquantumstudio.github.io/Official/" />
+		<link rel="icon" type="image/x-icon" href="assets/media/dev-icon.ico" />
+		<link rel="icon" type="image/png" href="assets/media/dev-ico.png" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+		<link rel="stylesheet" href="assets/css/style.css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+		<style>
+			#loader {
+			  position: fixed;top: 0; left: 0;
+			  width: 100%;height: 100%;background: black;
+			  display: flex;align-items: center;justify-content: center;
+			  z-index: 1000;opacity: 1;transition: opacity 1s ease;
+			}
+			#loader.fade-out {opacity: 0;}
+			canvas {display: block;}
+			   		html{scroll-behavior:smooth}
+		</style>
+		<link rel="stylesheet" href="assets/css/style_m.css" />
+	</head>
+	<body>
+		<div id="loader">
+			<canvas id="starfield"></canvas>
+		</div>
+		<div class="cursor-outer"></div>
+		<div class="cursor-inner">
+			<svg style="color: white;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+				<g fill="currentColor">
+					<path
+						d="M10.175 1.991c.81 1.312 1.583 3.43 1.778 6.819l1.5 1.83A2.5 2.5 0 0 1 14 12.202V15.5a.5.5 0 0 1-.9.3l-1.125-1.5c-.166-.222-.42-.4-.752-.57c-.214-.108-.414-.192-.627-.282l-.196-.083C9.7 13.793 8.85 14 8 14s-1.7-.207-2.4-.635q-.101.044-.198.084c-.211.089-.411.173-.625.281c-.332.17-.586.348-.752.57L2.9 15.8a.5.5 0 0 1-.9-.3v-3.298a2.5 2.5 0 0 1 .548-1.562l.004-.005L4.049 8.81c.197-3.323.969-5.434 1.774-6.756c.466-.767.94-1.262 1.31-1.57a3.7 3.7 0 0 1 .601-.41A.55.55 0 0 1 8 0c.101 0 .17.027.25.064q.056.025.145.075c.118.066.277.167.463.315c.373.297.85.779 1.317 1.537M9.5 6c0-1.105-.672-2-1.5-2s-1.5.895-1.5 2S7.172 8 8 8s1.5-.895 1.5-2"
+					/>
+					<path d="M8 14.5c.5 0 .999-.046 1.479-.139L8.4 15.8a.5.5 0 0 1-.8 0l-1.079-1.439c.48.093.98.139 1.479.139" />
+				</g>
+			</svg>
+		</div>
+		<!-- Skip link (a11y) -->
+		<a class="skip-link" href="#main">Skip to content</a>
+
+		<!-- Overlay -->
+		<div class="overlay" id="overlay" aria-hidden="true"></div>
+
+		<!-- Header -->
+		<header class="header" id="header">
+			<div class="container header-inner">
+				<div class="logo">
+					<a href="index.html" class="logo-mark" aria-label="Home">
+						<img src="assets/media/dev-ico.png" width="40" height="40" alt="" />
+					</a>
+					<a href="index.html" id="logo" class="logo-text">DevQuantum Studio</a>
+				</div>
+
+				<nav class="nav" aria-label="Primary">
+					<a href="index.html" aria-current="page" class="nav-link">Home</a>
+					<a href="about.html" class="nav-link">About</a>
+					<a href="contact.html" class="nav-link">Contact</a>
+					<a href="https://ko-fi.com/devquantumstudio" target="_blank" rel="noopener" class="nav-link nav-cta">Donate</a>
+				</nav>
+
+				<button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-controls="sideMenu" aria-expanded="false">
+					<i class="fa-solid fa-bars"></i>
+				</button>
+			</div>
+			<div class="header-border"></div>
+		</header>
+
+		<!-- Side Menu -->
+		<nav class="side-menu" id="sideMenu" aria-label="Mobile" aria-hidden="true">
+			<div class="side-menu-header">
+				<span class="side-brand">
+					<img src="assets/media/dev-ico.png" width="24" height="24" alt="" />
+					<strong>DevQuantum Studio</strong>
+				</span>
+				<button class="side-close" id="sideClose" aria-label="Close menu">
+					<i class="fa-solid fa-xmark"></i>
+				</button>
+			</div>
+			<a href="#main" aria-current="page" class="side-link">Home</a>
+			<a href="about.html" class="side-link">About</a>
+			<a href="contact.html" class="side-link">Contact</a>
+			<a href="https://ko-fi.com/devquantumstudio" target="_blank" rel="noopener" class="side-link">Donate</a>
+		</nav>
+
+		<!-- Hero Section (video unchanged) -->
+		<section class="hero" aria-label="Hero">
+			<video class="hero-video" autoplay muted loop playsinline>
+				<source src="assets/media/Blackhole.mp4" type="video/mp4" />
+				Your browser does not support the video tag.
+			</video>
+
+			<!-- Subtle gradient + glass overlay -->
+			<div class="hero-overlay">
+				<h1 class="hero-title">We Craft Digital Experiences</h1>
+				<p class="hero-subtitle">Web • Mobile • Desktop • Games</p>
+				<a href="#products" class="btn btn-primary">Explore Our Work</a>
+			</div>
+
+			<!-- Scroll hint -->
+			<a href="#about" class="scroll-hint" aria-label="Scroll to products">
+				<i class="fa-solid fa-arrow-down"></i>
+			</a>
+		</section>
+
+		<main id="main">
+			<section id="about" class="about">
+				<div class="container about-inner">
+					<div class="about-copy will-fade">
+						<h2 class="section-title">About Us</h2>
+						<p class="section-sub">We’re a small team building polished, privacy-respecting apps across platforms.</p>
+
+						<ul class="about-stats">
+							<li><span class="stat-num">3</span><span class="stat-label">Applications</span></li>
+							<li><span class="stat-num">4</span><span class="stat-label">Projects</span></li>
+							<li><span class="stat-num">2025</span><span class="stat-label">Founded</span></li>
+						</ul>
+
+						<div class="stack-chips">
+							<span class="chip">Web</span>
+							<span class="chip">React</span>
+							<span class="chip">Laravel</span>
+							<span class="chip">Python</span>
+							<span class="chip">Kotlin</span>
+							<span class="chip">Godot</span>
+						</div>
+					</div>
+
+					<aside class="about-card will-fade">
+						<h3>Our Focus</h3>
+						<p>Tools that feel fast, look great, and respect your time. We design, build, and iterate—then ship.</p>
+						<div class="about-badges">
+							<span class="chip">No Ads</span>
+							<span class="chip">No Trackers</span>
+							<span class="chip">Cross-platform</span>
+						</div>
+					</aside>
+				</div>
+			</section>
+
+			<!-- Products Section -->
+			<section id="products" class="products">
+				<div class="container">
+					<div class="section-head">
+						<h2 class="section-title">Our Projects</h2>
+						<p class="section-sub">A small selection of things we’ve worked on.</p>
+					</div>
+
+					<div class="product-grid">
+						<!-- Card -->
+						<article class="product-card will-fade" data-tilt>
+							<div class="card-media">
+								<img src="assets/media/Applogo.png" alt="Video Downloader" loading="lazy" />
+							</div>
+							<div class="card-body">
+								<div class="card-kicker">
+									<span class="chip">Utility</span>
+									<span class="chip">Cross-platform</span>
+								</div>
+								<h3 class="card-title">Qvideo Downloader</h3>
+								<p class="card-text">
+									Download from popular sources, quality up to 4K.
+								</p>
+								<div class="card-actions">
+									<a href="https://devquantumstudio.github.io/QvideoDownloader/about.html" target="_blank" class="btn btn-secondary">Learn More</a>
+									<a href="https://devquantumstudio.github.io/QvideoDownloader" target="_blank" class="link-arrow">Download <i class="fa-solid fa-arrow-right"></i></a>
+								</div>
+							</div>
+						</article>
+
+						<article class="product-card will-fade" data-tilt>
+							<div class="card-media">
+								<img src="assets/media/mlogo.png" alt="Video Downloader" loading="lazy" />
+							</div>
+							<div class="card-body">
+								<div class="card-kicker">
+									<span class="chip">Utility</span>
+									<span class="chip">Cross-platform</span>
+								</div>
+								<h3 class="card-title">Qmusic Downloader</h3>
+								<p class="card-text">Download from popular Music streaming paltforms.</p>
+								<div class="card-actions">
+									<a href="https://devquantumstudio.github.io/QmusicDownloader/about.html" target="_blank" class="btn btn-secondary">Learn More</a>
+									<a href="https://devquantumstudio.github.io/QmusicDownloader" target="_blank" class="link-arrow">Download <i class="fa-solid fa-arrow-right"></i></a>
+								</div>
+							</div>
+						</article>
+
+						<article class="product-card will-fade" data-tilt>
+							<div class="card-media">
+								<img src="assets/media/lylogo.png" alt="Video Downloader" loading="lazy" />
+							</div>
+							<div class="card-body">
+								<div class="card-kicker">
+									<span class="chip">Utility</span>
+									<span class="chip">Cross-platform</span>
+								</div>
+								<h3 class="card-title">Qlyrics Downloader</h3>
+								<p class="card-text">Drop your Music file and download lyrics for it.</p>
+								<div class="card-actions">
+									<a href="https://devquantumstudio.github.io/QlyricsDownloader/about.html" target="_blank" class="btn btn-secondary">Learn More</a>
+									<a href="https://devquantumstudio.github.io/QlyricsDownloader" target="_blank" class="link-arrow">Download <i class="fa-solid fa-arrow-right"></i></a>
+								</div>
+							</div>
+						</article>
+						<!-- More products -->
+						<article class="product-card will-fade" data-tilt>
+							<div class="card-media skeleton"></div>
+							<div class="card-body">
+								<div class="card-kicker">
+									<span class="chip">Entertainment</span>
+									<span class="chip">AI</span>
+								</div>
+								<h3 class="card-title">Coming Soon</h3>
+								<p class="card-text">Follow our official account for the upcoming release!</p>
+								<div class="card-actions">
+									<a href="https://twitter.com/DevQuantumSt" target="_blank" class="btn btn-secondary">Stay tuned</a>
+								</div>
+							</div>
+						</article>
+					</div>
+				</div>
+			</section>
+			<section id="updates" class="updates">
+				<div class="container">
+					<div class="section-head">
+						<h2 class="section-title">Latest Updates</h2>
+						<p class="section-sub">Release notes and behind-the-scenes.</p>
+					</div>
+
+					<ol class="timeline">
+						<li class="will-fade">
+							<time datetime="2025-07-20">Sep 18, 2025</time>
+							<div><strong>Qlyrics Downloader 1.0</strong> — Drop a file, fetch synced lyrics.</div>
+						</li>
+						<li class="will-fade">
+							<time datetime="2025-08-10">Sep 17, 2025</time>
+							<div><strong>Qmusic Downloader 1.0</strong> — Support embeded metadata.</div>
+						</li>
+						<li class="will-fade">
+							<time datetime="2025-09-01">Sep 16, 2025</time>
+							<div><strong>Qvideo Downloader 1.1</strong> — Support popular platforms, 4K presets.</div>
+						</li>
+					</ol>
+				</div>
+			</section>
+			<section id="roadmap" class="roadmap">
+				<div class="container">
+					<div class="section-head">
+						<h2 class="section-title">Roadmap</h2>
+						<p class="section-sub">A peek at what we’re building next.</p>
+					</div>
+
+					<div class="roadmap-grid">
+						<div class="roadmap-col will-fade">
+							<h3>Now</h3>
+							<ul>
+								<li>Qvideo Downloader: up to 4K</li>
+								<li>Qmusic Downloader: track art embed</li>
+								<li>Qlyrics Downloader: synced lrc support</li>
+							</ul>
+						</div>
+						<div class="roadmap-col will-fade">
+							<h3>Next</h3>
+							<ul>
+								<li>Coming Soon</li>
+							</ul>
+						</div>
+						<div class="roadmap-col will-fade">
+							<h3>Later</h3>
+							<ul>
+								<li>Stay tuned</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="cta-kofi">
+				<div class="container cta-kofi-inner">
+					<div class="cta-kofi-copy">
+						<h3>Enjoying our apps?</h3>
+						<p>Your support helps us keep building, improving, and shipping—ad-free.</p>
+					</div>
+					<a href="https://ko-fi.com/devquantumstudio" class="btn btn-primary" target="_blank" rel="noopener">
+						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 32 32">
+							<path
+								fill="currentColor"
+								d="M31.844 11.932c-1.032-5.448-6.48-6.125-6.48-6.125H.964C.156 5.807.057 6.87.057 6.87S-.052 16.637.03 22.637c.22 3.228 3.448 3.561 3.448 3.561s11.021-.031 15.953-.067c3.251-.568 3.579-3.423 3.541-4.98c5.808.323 9.896-3.776 8.871-9.219zm-14.751 4.683c-1.661 1.932-5.348 5.297-5.348 5.297s-.161.161-.417.031c-.099-.073-.14-.12-.14-.12c-.595-.588-4.491-4.063-5.381-5.271c-.943-1.287-1.385-3.599-.119-4.948c1.265-1.344 4.005-1.448 5.817.541c0 0 2.083-2.375 4.625-1.281c2.536 1.095 2.443 4.016.963 5.751m8.23.636c-1.24.156-2.244.036-2.244.036V9.714h2.359s2.631.735 2.631 3.516c0 2.552-1.313 3.557-2.745 4.021z"
+							/>
+						</svg>
+						Support us on Ko-fi
+					</a>
+				</div>
+			</section>
+		</main>
+
+		<!-- Footer -->
+		<footer class="footer">
+			<div class="container footer-inner">
+				<div class="copy">&copy; <span id="year"></span> DevQuantum Studio. All rights reserved.</div>
+				<nav class="footer-nav" aria-label="Footer">
+					<a href="privacy.html" class="footer-link">Privacy Policy</a>
+				</nav>
+			</div>
+		</footer>
+
+		<!-- Scroll to top -->
+		<button class="to-top" id="toTop" aria-label="Back to top">
+			<i class="fa-solid fa-arrow-up"></i>
+		</button>
+		<script>
+			const canvas = document.getElementById('starfield');
+			const ctx = canvas.getContext('2d');
+			const loader = document.getElementById('loader');
+			const mainContent = document.getElementById('header');
+
+			let stars = [];
+			const numStars = 200;
+			let width, height;
+
+			function init() {
+			  width = window.innerWidth;
+			  height = window.innerHeight;
+			  canvas.width = width;
+			  canvas.height = height;
+
+			  stars = [];
+			  for (let i = 0; i < numStars; i++) {
+			    stars.push({
+			      x: Math.random() * width,
+			      y: Math.random() * height,
+			      z: Math.random() * width,
+			    });
+			  }
+			}
+
+			let speed = 40;
+
+			function draw() {
+			  ctx.fillStyle = 'black';
+			  ctx.fillRect(0, 0, width, height);
+
+			  ctx.fillStyle = 'white';
+			  const focalLength = width;
+
+			  for (let i = 0; i < numStars; i++) {
+			    let star = stars[i];
+
+			    star.z -= speed;
+			    if (star.z <= 0) {
+			      star.x = Math.random() * width;
+			      star.y = Math.random() * height;
+			      star.z = width;
+			    }
+
+			    const sx = (star.x - width / 2) * (focalLength / star.z) + width / 2;
+			    const sy = (star.y - height / 2) * (focalLength / star.z) + height / 2;
+
+			    const radius = (focalLength / star.z) * 2;
+
+			    ctx.beginPath();
+			    ctx.arc(sx, sy, radius, 0, Math.PI * 2);
+			    ctx.fill();
+			  }
+
+			  requestAnimationFrame(draw);
+			}
+
+			window.addEventListener('resize', init);
+			init();
+			draw();
+
+			window.addEventListener('load', () => {
+			  loader.classList.add('fade-out');
+
+			  setTimeout(() => {
+			    loader.style.display = 'none';
+			    mainContent.style.display = 'block';
+			    document.body.style.overflow = 'auto';
+			  }, 1000);
+			});
+		</script>
+		<script src="assets/js/cursor.js"></script>
+		<script src="assets/js/script.js" defer></script>
+	</body>
+</html>
